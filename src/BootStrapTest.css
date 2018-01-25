@@ -1,0 +1,24 @@
+#main {
+  /* border: 1px solid black; */
+  display: -webkit-flex;
+  /* Safari */
+  -webkit-align-items: flex-start;
+  /* Safari 7.0+ */
+  display: flex;
+  align-items: flex-start;
+}
+
+#main div {
+  -webkit-flex: 1;
+  /* Safari 6.1+ */
+  flex: 1;
+}
+
+#myBlueDiv {
+  -webkit-align-self: center;
+  /* Safari 7.0+ */
+  align-self: center;
+}
+#shadow{
+  text-shadow: 0px 3px #979797;
+}
