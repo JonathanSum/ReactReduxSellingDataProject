@@ -90,7 +90,7 @@ printLabels()
 
 }
   render() {
-const drawing = <canvas id="canavs" ref="canvas" width={this.state.width} height={this.state.height}/>
+const drawing = <canvas id="Sales" ref="canvas" width={this.state.width} height={this.state.height}/>
 
     return (drawing);
   }

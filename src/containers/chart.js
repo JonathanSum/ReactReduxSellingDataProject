@@ -49,12 +49,27 @@ class Chart extends Component {
       chartData: {
         labels: tenDays,
         datasets: [
-          {
-            label: 'Amount Of Sells',
+{
+  borderWidth:1,
+             label: 'Bracelet',
             data: [
-              0, 10,50, 80,10,60,20,40,20,0,
+              0, 20,40, 30,25,50,20,40,20,0,
             ],
             backgroundColor: ['rgba(36, 199, 211, 0.6)']
+          },
+                    {
+            label: 'Fitted Cap',
+            data: [
+              0, 10,25, 40,30,50,30,20,5,0,
+            ],
+            backgroundColor: ['rgba(194, 136, 56, 0.6)']
+          },
+                    {
+            label: 'Hoodie',
+            data: [
+              0, 5,10, 20,30,54,70,50,20,0,
+            ],
+            backgroundColor: ['rgba(181, 87, 101, 0.6)']
           }
         ]
       }
@@ -76,14 +91,29 @@ class Chart extends Component {
           options={{
           title: {
             display: this.props.displayTitle,
-            text: "Total Sales " + this.props.location,
+            // text: "Total Sales " + this.props.label,
             fontSize: 25
           },
           legend: {
             display: this.props.displayLegend,
             position: this.props.legendPosition
-          }
-        }}/></div></div>
+          },
+          scales: {
+    xAxes: [{display:false,
+                gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                }
+            }],
+    yAxes: [{display:false,
+                gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                }
+            }]
+    }
+
+        }
+
+      }/></div></div>
     )
   }
 

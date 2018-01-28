@@ -6,9 +6,16 @@ constructor(props) {
   super(props);
   this.state = {
    W:window.innerWidth*100/750,
-    H:window.innerHeight
+    H:window.innerHeight,
+    text:'OMG'
   }
+   this.handleClick = this.handleClick.bind(this);
   this.updateDimensions=this.updateDimensions.bind(this)
+}
+handleClick() {
+this.setState({text: 'Yea'})
+const ctx = this.refs.canvas.getContext('2d')
+ctx.arc(50,80,80,0,6)
 }
 componentWillMount() {
   this.updateDimensions();
@@ -28,6 +35,7 @@ updateDimensions() {
     H:window.innerHeight
 
   })}
+
 updateCanvas() {
   const ctx = this.refs.canvas.getContext('2d');
 
@@ -47,10 +55,24 @@ let cW = ctx.canvas.width
 let cH = ctx.canvas.height
 ctx.beginPath();
 ctx.arc(cW * 60 / 750 + cW * 45 / 750, cH / 2, cW *45 / 750, 0.5 * Math.PI, -0.5 * Math.PI)
+//Total Rectangle is (cW * (1 - 60 / 750) - cW * 1.05 * 45 / 750-cW * 60 / 750 + cW * 45 / 750
+let tLen = (cW * (1 - 60 / 750) - cW * 1.05 * 45 / 750-cW * 60 / 750 + cW * 45 / 750)*0.8560
 ctx.arc(cW * (1 - 60 / 750) - cW * 1.05 * 45 / 750, cH / 2, cW * 45 / 750, -0.5 * Math.PI, 0.5 * Math.PI)
 ctx.lineWidth =2;
 ctx.strokeStyle = '#fff3cf';
 ctx.closePath();
+ctx.stroke();
+ctx.beginPath()
+
+ctx.moveTo(cW * 60 / 750 + cW * 45 / 750, cH / 2 - cW * 45 / 750);
+
+ctx.rect(cW * 60 / 750 + cW * 45 / 750, cH / 2 - cW * 45 / 750, tLen / 3, 2 * cW * 45 / 750);
+
+ctx.rect(cW * 60 / 750 + cW * 45 / 750 + tLen / 3, cH / 2 - cW * 45 / 750, tLen / 3, 2 * cW * 45 / 750);
+ctx.rect(cW * 60 / 750 + cW * 45 / 750 +2* tLen / 3, cH / 2 - cW * 45 / 750, tLen / 3, 2 * cW * 45 / 750);
+ctx.moveTo(cW * 60 / 750 + cW * 45 / 750, cH / 2);
+ctx.lineTo(cW * (1 - 60 / 750) - cW * 1.05 * 45 / 750, cH / 2)
+
 ctx.stroke();
 
 
@@ -63,38 +85,18 @@ ctx.arc(this.state.W / 2, this.state.H / 2, this.state.W*0.3, 0, 2 * Math.PI)
 ctx.stroke();
 
 }
+ctx.font = "30px Arial";
+ctx.fillText(this.state.W + " and high is: cH! " + this.state.text, ctx.canvas.width / 4, ctx.canvas.height / 4)
 print()
 
 
-//   ctx.beginPath();
-//   ctx.arc(cW* 60 / 750+cW*6/750, cH/2, cW*6/750,  0.5 * Math.PI, -0.5 * Math.PI)
-// ctx.arc(cW*(1-60 / 750)-cW*1.5*6/750, cH / 2, cW*6/750 , -0.5 * Math.PI, 0.5 * Math.PI)
-// ctx.lineWidth = 0.5;
-// ctx.strokeStyle = '#fff3cf';
-// ctx.closePath();
-// ctx.stroke();
-// ctx.beginPath();
-// const P=0.1
-
-// const calP = (P) => {
-//   let endBar = (((cW * (1 - 60 / 750) - cW *1.5* 6 / 750) + -cW * 60 / 750) * P + cW * 60 / 750)
-//   if(P>0.01){    //Setting min 1%
-//       ctx.arc(cW * 60 / 750 + cW * 5 / 750, cH / 2, cW * 7 / 750, 0.5 * Math.PI, -0.5 * Math.PI)
-//       //end of the bar
-//       ctx.arc(endBar, cH / 2, cW * 7 / 750, -0.5 * Math.PI, 0.5 * Math.PI)
-//       ctx.strokeStyle = '#FF867D';
-//       ctx.fillStyle = '#FF867D';
-//       ctx.fill()
-//   }else{
-//     return;
-//   }
-// }
-// calP(P)
 }
 render() {
   const drawing = <canvas ref="canvas"/>
 
-  return (drawing);
+return (<div><canvas ref="canvas"/><h1 onClick={this.handleClick}>
+        CLick {this.state.text}
+      </h1></div>);
 }
 }
 

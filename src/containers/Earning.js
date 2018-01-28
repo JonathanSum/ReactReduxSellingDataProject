@@ -5,7 +5,7 @@ import circleBar from './CircleBar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './secondChart.css';
 import sCircle from './sCircle'
-class TopTwo extends Component {
+class Earning extends Component {
   constructor() {
     super();
     this.state = {
@@ -77,10 +77,10 @@ class TopTwo extends Component {
     ctx.fillText("135", cW / 2, cW * 68 / 750 * 32 / 25+38/380*cH);
   }
   render() {
-    const drawing = <canvas ref="canvas" width={this.state.width} height={this.state.height}/>
+    const drawing = <canvas id="Earning" ref="canvas" width={this.state.width} height={this.state.height}/>
 
     return (drawing);
   }}
-export default TopTwo;
+export default Earning;
 
 

@@ -1,17 +1,38 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+// import Drop from './containers/Drop'
+import Title from './containers/Title'
 // import UserList from './containers/user-list'
 // import UserDetail from './containers/user-detail'
 // import WeaponList from './containers/weapon-list'
 import Chart from './containers/chart'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import SecondChart from './containers/secondChart.js'
-import TopTwo from './containers/TopTwo.js'
+import Earning from './containers/Earning.js'
 // import { Button } from 'reactstrap';
-import BApp from './BootStrapTest'
+import TotalSale from './containers/TotalSales'
 import ProgressBar from './containers/progress-bar'
-import NavBar from './containers/NavBar'
+import NavBar2 from './containers/NavBar2'
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+      <Title/>
+      <NavBar2/>
+      <ProgressBar/>
+      <TotalSale/>
+      <Chart/>
+      <SecondChart/>
+      <Earning/>
+      </div>
+    );
+  }
+}
+
+export default App;
+
 // const App2=()=>(
 //   <div>
 //     <h2>Username List:</h2>
@@ -24,20 +45,3 @@ import NavBar from './containers/NavBar'
 //         <WeaponList/>
 //   </div>
 // )
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-      <NavBar/>
-      <ProgressBar/>
-      <BApp/>
-      <Chart/>
-      <SecondChart/>
-      <TopTwo/>
-      </div>
-    );
-  }
-}
-
-export default App;
-

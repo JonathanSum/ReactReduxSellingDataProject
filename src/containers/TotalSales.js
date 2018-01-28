@@ -1,7 +1,9 @@
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { Component } from 'react';
-import './BootStrapTest.css';
+import './TotalSales.css';
 import { Container, Row, Col } from 'reactstrap';
+
+
 class Status1 extends Component {
 	constructor(props) {
 		super(props);
@@ -131,13 +133,13 @@ const data = {
 	order: 135,
 	completed: 124
 };
-export default class BApp extends Component {
+export default class TotalSale extends Component {
 	render() {
 		return (
 			<div>
 				<Status1 />
 				<Status1Number />
-				<p style={TotalSales}>Total Sales</p>
+				<p id="TotalSales" style={TotalSales}>Total Sales</p>
 				<p style={TotalSalesAmount}>$448.50</p>
 			</div>
 		);
