@@ -1,81 +1,23 @@
 import React, {Component} from 'react'
 import {Line} from 'react-chartjs-2'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import {connect} from 'react-redux'
 
-const data = {
-  labels: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July'
-  ],
-  datasets1: [
-    {
-      label: 'My First dataset',
-      backgroundColor: 'rgba(255,99,132,0.2)',
-      borderColor: 'rgba(255,99,132,1)',
-      borderWidth: 1,
-      hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-      hoverBorderColor: 'rgba(255,99,132,1)',
-      data: [
-        65,
-        59,
-        80,
-        81,
-        56,
-        55,
-        40
-      ]
-    }
-  ]
-};
-//hartData: props.chartData
-const tenDays = [];
-const pDaysList = (Days, list) => {
+
+
+const pDaysList = (Days) => {
+  const list = [];
   for (let i = 0; i < Days; i++) {
     list[i] = i + 1
   }
   return list
 }
-pDaysList(10, tenDays)
-console.log(tenDays)
 class Chart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      chartData: {
-        labels: tenDays,
-        datasets: [
-{
-  borderWidth:1,
-             label: 'Bracelet',
-            data: [
-              0, 20,40, 30,25,50,20,40,20,0,
-            ],
-            backgroundColor: ['rgba(36, 199, 211, 0.6)']
-          },
-                    {
-            label: 'Fitted Cap',
-            data: [
-              0, 10,25, 40,30,50,30,20,5,0,
-            ],
-            backgroundColor: ['rgba(194, 136, 56, 0.6)']
-          },
-                    {
-            label: 'Hoodie',
-            data: [
-              0, 5,10, 20,30,54,70,50,20,0,
-            ],
-            backgroundColor: ['rgba(181, 87, 101, 0.6)']
-          }
-        ]
-      }
     }
   }
-
   static defaultProps = {
     displayTitle: false,
     displayLegend: false,
@@ -83,11 +25,36 @@ class Chart extends Component {
     location: "Sales"
   }
   render() {
+    let dataSale=[]
+    if(!this.props.date){
+dataSale = [this.props.data[0]['dataWeek'], this.props.data[1]['dataWeek'], this.props.data[2]['dataWeek'], pDaysList(10)]
+    }else{
+      dataSale=[this.props.date[0],this.props.date[1],this.props.date[2],this.props.date[3]]
+    }
     return (
       <div className="container">
       <div className="chart">
         <Line
-          data={this.state.chartData}
+          data={{
+  labels: dataSale[3],
+  datasets: [
+    {
+      borderWidth: 1,
+label : this.props.data[0]['label'],
+      data: dataSale[0],
+      backgroundColor: this.props.data[0]['backgroundColor']
+    }, {
+      label: this.props.data[1]['label'],
+      data: dataSale[1],
+      backgroundColor: this.props.data[1]['backgroundColor']
+    }, {
+      label: this.props.data[2]['label'],
+      data: dataSale[2],
+      backgroundColor: this.props.data[2]['backgroundColor']
+    }
+  ]
+}}
+
           options={{
           title: {
             display: this.props.displayTitle,
@@ -99,7 +66,7 @@ class Chart extends Component {
             position: this.props.legendPosition
           },
           scales: {
-    xAxes: [{display:false,
+    xAxes: [{display:true,
                 gridLines: {
                     color: "rgba(0, 0, 0, 0)",
                 }
@@ -107,15 +74,30 @@ class Chart extends Component {
     yAxes: [{display:false,
                 gridLines: {
                     color: "rgba(0, 0, 0, 0)",
+                },
+                                ticks: {
+                    suggestedMin: 10,
+                    suggestedMax:10
                 }
             }]
     }
 
         }
 
-      }/></div></div>
+      }/>
+      </div></div>
     )
   }
 
 }
-export default Chart;
+
+function mapStateToProps(state){
+  return{
+    data:state.datas,
+    date:state.activeData
+  }
+}
+function matchDispatchToProps(dispatch){
+
+}
+export default connect(mapStateToProps)(Chart)

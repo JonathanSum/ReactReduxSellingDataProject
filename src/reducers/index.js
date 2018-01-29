@@ -1,12 +1,8 @@
 import {combineReducers} from 'redux';
-import UserReducer from './reducer-users'
-import AmmoCreate from'./ammo'
-import ActiveUserReducer from './reducer-active-user'
-import ActiveWeaponReducer from './reducer-active-ammo'
+import DataSet from './reducer-data'
+import ActiveDataReducer from './reducer-active-data'
 const allReducers = combineReducers({
-  users: UserReducer,
-  weapons: AmmoCreate,
-  activeUser: ActiveUserReducer,
-  activeWeapon:ActiveUserReducer
+  datas: DataSet,
+activeData : ActiveDataReducer
 })
 export default allReducers

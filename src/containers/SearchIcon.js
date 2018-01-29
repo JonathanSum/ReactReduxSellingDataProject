@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Collapse, Button, CardBody, Card} from 'reactstrap';
-import Example from './SearchList'
+import List from './SearchList'
 
 
 export default class SearchIcon extends React.Component{
@@ -11,7 +11,7 @@ constructor(props) {
 render() {
   return (
     <div>
-    <Example/>
+    <List/>
     </div>
   );
 }

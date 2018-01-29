@@ -47,7 +47,7 @@ class DropOnly extends React.Component {
     return (
       <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <DropdownToggle style={{backgroundColor:'rgb(76, 42, 79)'}}>
-          				<canvas  onClick={this.handleClick}
+          				<canvas
           ref="canvas"
           width={window.innerWidth * 28 / 750}
           height={window.innerWidth * 21 / 750}/>

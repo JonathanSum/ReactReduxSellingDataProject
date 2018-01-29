@@ -1,3 +1,5 @@
+//This page is useless. I was trying to draw a canvas since canvas is always better than CSS. However, I found out the I should recap my css. Thus, I quit the canvas way and use css old way.
+
 import React, {Component} from 'react'
 import circleBar from './CircleBar'
 class NavBar extends React.Component{

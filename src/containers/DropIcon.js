@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import cheese from './cheese.jpg';
 export default class DropIcon extends React.Component {
   componentDidMount() {
     this.updateCanvas();
