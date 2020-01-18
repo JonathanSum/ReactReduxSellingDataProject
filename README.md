@@ -1,5 +1,7 @@
 Want to see what the project looks like? Click here: https://saleapp1.herokuapp.com/ (Please check it with your cell phone since I don't have time to make it for desktop too.
 
+
+<img src=https://github.com/JonathanSum/ReactReduxSellingDataProject/blob/master/project.png?raw=true>
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
